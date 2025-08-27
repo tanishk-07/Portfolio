@@ -1,0 +1,390 @@
+/* --- [EXISTING CSS...] --- */
+/* (All your previous CSS goes here. I'm only showing the new additions) */
+/* --- GLOBAL STYLES & GRADIENT BACKGROUND --- */
+
+
+@font-face {
+  font-family: 'NGNLFont';
+  src: url('fonts/NGNL-Logo-Font.ttf') format('truetype');
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  overflow-x: hidden;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  text-align: center;
+}
+
+body {
+  background: linear-gradient(135deg, #a800ff, #ff00a8, #00d4ff, #ffea00);
+  background-size: 500% 500%;
+  animation: gradientShift 20s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* --- SCROLL CONTAINER & PAGES --- */
+.scroll-container {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    /* This enables the parallax effect */
+    perspective: 1px; 
+}
+
+section {
+    height: 100vh;
+    width: 100%; /* <-- This is the corrected line */
+    scroll-snap-align: start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+}
+
+/* --- PARTICLE CANVAS --- */
+#particleCanvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: -1;
+}
+
+/* --- NAVBAR & LOGO --- */
+.navbar {
+    position: fixed; top: 0; left: 0;
+    width: 100%; padding: 0.8rem 2rem;
+    z-index: 100;
+    background-color: rgba(20, 0, 40, 0.5);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+.nav-container {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+}
+.nav-brand { text-decoration: none; }
+.nav-logo {
+    height: 40px; /* Adjust height as needed */
+    width: auto;
+    filter: drop-shadow(0 0 5px white);
+}
+.nav-links a {
+    color: white; text-decoration: none;
+    margin-left: 2rem; font-weight: 400;
+    transition: color 0.3s ease;
+    vertical-align: middle; /* Align links with button */
+}
+.nav-links a:hover { color: #00d4ff; }
+
+/* --- HERO SECTION & PARALLAX CHARACTERS --- */
+#hero {
+    transform-style: preserve-3d; /* Enables parallax */
+}
+.hero-content {
+    z-index: 2; /* Ensures text is above characters */
+}
+.character {
+    position: absolute;
+    bottom: 8%; /* lifted characters above ground */
+    max-height: 60%;
+    width: auto;
+    z-index: 1;
+    transition: transform 0.5s ease-out;
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Sora */
+.sora {
+    left: 5%; /* moved in slightly, not too close to edge */
+    max-height: 80%;
+}
+
+/* Shiro */
+.shiro {
+    right: 5%; /* moved in slightly */
+    max-height: 75%;
+    animation-delay: 1s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+#hero .title {
+  font-family: 'NGNLFont', sans-serif;
+  font-size: clamp(3rem, 10vw, 6rem);
+  font-weight: normal;
+  margin: 0;
+  text-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff, 0 0 30px #ffff00;
+}
+#hero .subtitle {
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  margin-top: 0.5rem;
+  font-weight: 300;
+}
+
+/* --- NGL HEADING STYLE --- */
+.ngl-heading {
+    font-family: 'NGNLFont', sans-serif;
+    font-size: 2.5rem;
+    font-weight: normal;
+    color: white; /* Changed to white for visibility */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    /* Adjusted text-shadow for better visibility with white text */
+    text-shadow: 0 0 8px #ff00ff, 0 0 15px #00ffff, 0 0 25px #ffea00; 
+    margin-bottom: 2rem;
+}
+h2 {
+    font-family: 'NGNLFont', sans-serif; /* Added for consistency if using h2 directly */
+    font-weight: normal; 
+    font-size: 2.8rem;
+    margin-bottom: 2rem;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+}
+.card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 30px; border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+  width: 100%; max-width: 800px;
+}
+.project-container { max-width: 1200px; }
+.project-grid {
+    display: flex;         /* Arranges items in a row */
+    overflow-x: auto;      /* Enables horizontal scrolling if needed */
+    gap: 2rem;
+    width: 100%;
+    padding-bottom: 20px;  /* Adds space for the scrollbar */
+}
+
+/* Add this new rule for the project link */
+.project-link {
+    flex: 0 0 350px;       /* Stops cards from shrinking and sets a fixed width */
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+.project-card {
+    padding: 0; text-align: left;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 25px #ff00ff, 0 0 40px #00ffff;
+}
+.project-image {
+    width: 100%; height: 200px; object-fit: cover;
+    border-radius: 15px 15px 0 0;
+}
+.project-card h3, .project-card .tags { padding: 0 20px; }
+.project-card h3 { margin-top: 15px; margin-bottom: 10px;}
+.tags { padding-bottom: 20px; }
+.tags span {
+    display: inline-block; background: rgba(255, 255, 255, 0.2);
+    padding: 5px 10px; border-radius: 5px; font-size: 0.8rem;
+    margin: 5px 5px 5px 0;
+}
+.btn {
+  display: inline-block; padding: 12px 30px; margin-top: 20px;
+  color: white; text-decoration: none; border-radius: 50px;
+  background: linear-gradient(45deg, #ff00a8, #00d4ff);
+  box-shadow: 0 0 15px #ff00ff, 0 0 25px #00ffff;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px #ffff00, 0 0 40px #ff00ff;
+}
+/* --- Optional: Custom Scrollbar for Project Section --- */
+.project-grid::-webkit-scrollbar {
+    height: 8px;
+}
+.project-grid::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+}
+.project-grid::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+/* --- NEW STYLES FOR ENHANCED PROJECT CARDS --- */
+
+/* Makes the entire card a clickable link without ugly underlines */
+.project-link {
+    text-decoration: none;
+    color: inherit;
+    display: block; /* Ensures the link takes up the full card space */
+}
+
+/* Styles for the new description paragraph */
+.project-description {
+    padding: 0 20px;
+    margin: 10px 0;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    min-height: 54px; /* Gives cards a more uniform height */
+}
+
+/* Ensure the card itself fills the link container */
+.project-card {
+    height: 100%;
+}
+
+/* --- STYLES for Skills inside About Card --- */
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns on larger screens */
+    gap: 1rem 2rem; /* Vertical and horizontal gap */
+    text-align: left;
+    width: 100%;
+    margin-top: 2rem; /* Adds space between the paragraph and the skills */
+    border-top: 1px solid rgba(255, 255, 255, 0.2); /* Separator line */
+    padding-top: 2rem;
+}
+
+.skill-category h3 {
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+    color: white; /* Changed from blue to white for readability */
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5); /* Adds a subtle shadow to lift the text */
+}
+
+/* --- NEW STYLES for Contact Section Social Links --- */
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem; /* Space between icons */
+    margin-top: 1.5rem; /* Space above the icons */
+    margin-bottom: 2rem; /* Space between icons and the button */
+}
+
+.social-icon {
+    color: white;
+    width: 40px;
+    height: 40px;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: scale(1.2) translateY(-3px); /* Make the icon pop and lift */
+    color: #00d4ff; /* Glow color on hover */
+}
+
+.social-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.skill-category .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding-bottom: 0;
+}
+
+/* --- NEW STYLE for the Email Text --- */
+
+.contact-email {
+    color: #f0f0f0; /* A slightly softer white for readability */
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-top: 2.5rem; /* Adds space between the icons and the email */
+    letter-spacing: 0.5px;
+    word-break: break-all; /* Ensures the email doesn't overflow on small screens */
+}
+
+#about {
+    /* Let the section grow to fit the content */
+    min-height: 100vh;
+    height: auto;
+    
+    /* Align the card to the top instead of the center */
+    align-items: flex-start;
+
+    /* Add padding to clear the top navbar */
+    padding-top: 120px;
+    padding-bottom: 60px; /* Add some space at the bottom */
+}
+
+/* Responsive adjustment for smaller screens */
+@media (max-width: 768px) {
+    .skills-grid {
+        grid-template-columns: 1fr; /* Stacks into a single column on mobile */
+    }
+}
+/* --- RESPONSIVE DESIGN --- */
+@media (max-width: 900px) {
+    .character { max-height: 70%; }
+    .sora { left: -25%; }
+    .shiro { right: -25%; }
+}
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .character { max-height: 50%; }
+    .sora { left: -40%; }
+    .shiro { right: -40%; }
+}
+
+/* --- NEW MUSIC TOGGLE STYLES --- */
+#music-toggle-btn {
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: white;
+    cursor: pointer;
+    margin-left: 2rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#music-toggle-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: white;
+}
+
+#music-toggle-btn svg {
+    width: 22px;
+    height: 22px;
+    fill: white;
+}
+
+/* Logic to show the correct icon */
+#music-toggle-btn .icon-on { display: none; }
+#music-toggle-btn .icon-off { display: block; }
+
+#music-toggle-btn.playing .icon-on { display: block; }
+#music-toggle-btn.playing .icon-off { display: none; }
+
+/* --- Styles for Hiding Navbar on Scroll --- */
+
+.navbar {
+    /* ... (your existing navbar styles are here) ... */
+    transition: transform 0.4s ease-in-out; /* This makes the hide/show a smooth slide */
+}
+
+.navbar-hidden {
+    /* This class will be added by JavaScript to slide the navbar up and out of view */
+    transform: translateY(-100%);
+}
+
