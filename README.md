@@ -14,7 +14,7 @@
 * **Background Music:** Includes background music with an easy-to-use toggle button to enhance the user experience.
 * **Detailed Skills Section:** A categorized grid layout showcasing technical skills, including languages, frameworks, and tools.
 * **Horizontally Scrolling Projects:** A unique, side-scrolling container to display project cards.
-* **Fully Responsive:** A mobile-first design that ensures the portfolio looks and works great on all devices, from desktops to smartphones.
+
 
 ---
 
@@ -31,13 +31,9 @@
 To get a local copy up and running, follow these simple steps.
 
 1.  **Clone the repository**
-    ```sh
-    git clone [https://github.com/tanishk-07/your-portfolio-repo.git](https://github.com/tanishk-07/your-portfolio-repo.git)
-    ```
+   
 2.  **Navigate to the project directory**
-    ```sh
-    cd your-portfolio-repo
-    ```
+   
 3.  **Open the website**
     * Simply open the `index.html` file in your favorite web browser.
 
@@ -47,10 +43,4 @@ To get a local copy up and running, follow these simple steps.
 
 This project is licensed under the MIT License. See the `LICENSE` file for details.
 
----
 
-## 📬 Contact
-
-Tanishk Panwar - [realtanishk07@gmail.com](mailto:realtanishk07@gmail.com)
-
-Project Link: [https://github.com/tanishk-07/your-portfolio-repo](https://github.com/tanishk-07/your-portfolio-repo)
