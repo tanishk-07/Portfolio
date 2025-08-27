@@ -1,6 +1,6 @@
 # Tanishk Panwar - Interactive Personal Portfolio
- https://tanishk-panwar.netlify.app/
- A vibrant, single-page personal portfolio inspired by the aesthetic of 'No Game No Life'. This project showcases my skills and projects in a dynamic and visually engaging way, built from the ground up with modern web technologies.
+
+A vibrant, single-page personal portfolio inspired by the aesthetic of 'No Game No Life'. This project showcases my skills and projects in a dynamic and visually engaging way, built from the ground up with modern web technologies.
 
 ---
 
